@@ -1,0 +1,181 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+.listing {
+  background: #ddd;
+  padding: 0.5em;
+  font-family: sans-serif;
+}
+.listing:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.listing[data-eq-state="large-preview"] {
+  padding: 1em;
+}
+.listing * + * {
+  margin-top: 0.5em;
+}
+.listing--primary-header {
+  font-weight: bold;
+  font-size: 1.15em;
+  line-height: 1em;
+}
+[data-eq-state="three-cols"] .listing--details {
+  width: 50%;
+  float: left;
+  padding-right: 0.5em;
+}
+.listing--address {
+  margin-top: 1.5em;
+}
+[data-eq-state="three-cols"] .listing--address {
+  margin-top: 0;
+  width: 50%;
+  float: right;
+  padding-left: 0.5em;
+}
+.listing [itemprop="name"] {
+  font-weight: bold;
+  display: block;
+}
+.listing [itemprop="streetAddress"] {
+  display: block;
+}
+.listing [itemprop="addressLocality"],
+.listing [itemprop="postalCode"] {
+  display: inline-block;
+}
+.listing--view {
+  background: #333;
+  color: white;
+  text-decoration: none;
+  padding: .5em 1em;
+  display: inline-block;
+  border-radius: .5em;
+  margin-top: 1.5em;
+}
+[data-eq-state="three-cols"] .listing--view {
+  clear: both;
+  float: left;
+  margin-left: 50%;
+}
+[data-eq-state="floated-image"] .listing--information, [data-eq-state="three-cols"] .listing--information, [data-eq-state="large-preview"] .listing--information {
+  float: right;
+  padding-left: 0.5em;
+}
+[data-eq-state="floated-image"] .listing--information {
+  width: 50%;
+}
+[data-eq-state="three-cols"] .listing--information, [data-eq-state="large-preview"] .listing--information {
+  width: 67%;
+}
+[data-eq-state="large-preview"] .listing--information {
+  width: 33%;
+}
+[data-eq-state="floated-image"] .listing--preview, [data-eq-state="three-cols"] .listing--preview, [data-eq-state="large-preview"] .listing--preview {
+  float: left;
+  padding-right: 0.5em;
+  margin-top: 0;
+}
+[data-eq-state="floated-image"] .listing--preview {
+  width: 50%;
+}
+[data-eq-state="three-cols"] .listing--preview, [data-eq-state="large-preview"] .listing--preview {
+  width: 33%;
+}
+[data-eq-state="large-preview"] .listing--preview {
+  width: 67%;
+}
+.listing--image {
+  max-height: 15em;
+  display: block;
+  margin: 0 auto;
+}
+.listing--map {
+  display: block;
+  float: left;
+  clear: both;
+  border-color: #ddd;
+  border-width: .25em;
+  border-top: groove;
+  border-left: groove;
+  border-right: solid #ccc;
+  border-bottom: solid #ccc;
+  position: relative;
+  height: 0;
+  padding-top: 75%;
+  width: 100%;
+}
+.listing--map > * {
+  display: block;
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0;
+  margin: 0;
+  padding: 0;
+}

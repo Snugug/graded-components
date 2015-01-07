@@ -4,8 +4,45 @@
   <meta charset="UTF-8">
   <title>Graded Components</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="bower_components/eq.js/dist/eq.min.js"></script>
+  <script src="js/listing.js"></script>
 </head>
 <body>
+  <div class="listing" data-eq-pts="floated-image: 330, three-cols: 476, large-preview: 656">
 
+    <div class="listing--information">
+      <div class="listing--details">
+        <h2 class="listing--primary-header">
+          Property Details
+        </h2>
+        <ul class="listing--amenities">
+          <li class="listing--amenity">4 bedroom / 3 bath</li>
+          <li class="listing--amenity">2-car garage</li>
+        </ul>
+      </div>
+
+      <div class="listing--address" itemscope itemtype="http://schema.org/PostalAddress" data-address="1600%20Pennsylvania%20Avenue%20Northwest%2C%20Washington%2C%20DC%2C%20United%20States">
+        <span itemprop="name">The White House</span>
+        <span itemprop="streetAddress">1600 Pennsylvania Ave</span>
+        <span itemprop="addressLocality">Washington</span>,
+        <span itemprop="addressRegion">DC</span>
+        <span itemprop="postalCode">20500</span>
+      </div>
+
+      <a class="listing--view" href="https://www.google.com/maps/place/1600+Pennsylvania+Ave+NW,+Washington,+DC+20500/@38.8977332,-77.0365305,17z/data=!3m1!4b1!4m2!3m1!1s0x89b7b7bcdec17ee3:0xf920b148b3d45e45">View Map</a>
+    </div>
+
+    <div class="listing--preview">
+      <img src="images/house.jpg" alt="White House, from Wikipedia" class="listing--image">
+    </div>
+
+<!--     <div class="listing--map">
+      <iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=&key=AIzaSyD6ATXLbrPCgBoeLzcWD1AphoYxKxwbNjE"></iframe>
+    </div> -->
+
+
+
+  </div>
 </body>
 </html>

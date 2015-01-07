@@ -28,20 +28,155 @@ $browser-minimum-versions: (
         "modular-scale";
 ////////////////////////
 
-//////////////////////////////
-// GLOBALS
-@import "partials/global/variables",
-        "partials/global/functions",
-        "partials/global/mixins",
-        "partials/global/extends";
-//////////////////////////////
+.listing {
+  $alignment: .5em;
 
-//////////////////////////////
-// COMPONENTS
+  background: #ddd;
+  padding: $alignment;
+  font-family: sans-serif;
+  @include clearfix;
 
-//////////////////////////////
+  &[data-eq-state="large-preview"] {
+    padding: $alignment * 2;
+  }
 
-//////////////////////////////
-// LAYOUTS
+  // Vertical Alignment
+  * + * {
+    margin-top: $alignment;
+  }
 
-//////////////////////////////
+  // Header Styling
+  &--primary-header {
+    font-weight: bold;
+    font-size: 1.15em;
+    line-height: 1em;
+  }
+
+  &--details {
+    [data-eq-state="three-cols"] & {
+      width: 50%;
+      float: left;
+      padding-right: $alignment;
+    }
+  }
+
+
+  &--address {
+    margin-top: $alignment * 3;
+
+    [data-eq-state="three-cols"] & {
+      margin-top: 0;
+      width: 50%;
+      float: right;
+      padding-left: $alignment;
+    }
+  }
+
+  // Address Styling
+  [itemprop="name"] {
+    font-weight: bold;
+    display: block;
+  }
+
+  [itemprop="streetAddress"] {
+    display: block;
+  }
+
+  [itemprop="addressLocality"],
+  [itemprop="postalCode"] {
+    display: inline-block;
+  }
+
+  // View Listing button
+  &--view {
+    background: #333;
+    color: white;
+    text-decoration: none;
+    padding: .5em 1em;
+    display: inline-block;
+    border-radius: .5em;
+    margin-top: $alignment * 3;
+
+    [data-eq-state="three-cols"] & {
+      clear: both;
+      float: left;
+      margin-left: 50%;
+    }
+  }
+
+  &--information {
+
+    @at-root {
+      %listing--right-column {
+        float: right;
+        padding-left: $alignment;
+      }
+    }
+
+    [data-eq-state="floated-image"] & {
+      @extend %listing--right-column;
+      width: 50%;
+    }
+
+    [data-eq-state="three-cols"] &,
+    [data-eq-state="large-preview"] & {
+      @extend %listing--right-column;
+      width: 67%;
+    }
+
+
+    [data-eq-state="large-preview"] & {
+      width: 33%;
+    }
+  }
+
+  &--preview {
+
+    @at-root {
+      %listing--left-column {
+        float: left;
+        padding-right: $alignment;
+        margin-top: 0;
+      }
+    }
+
+    [data-eq-state="floated-image"] & {
+      @extend %listing--left-column;
+      width: 50%;
+    }
+
+    [data-eq-state="three-cols"] &,
+    [data-eq-state="large-preview"] & {
+      @extend %listing--left-column;
+      width: 33%;
+    }
+
+    [data-eq-state="large-preview"] & {
+      width: 67%;
+    }
+  }
+
+  &--image {
+    max-height: 15em;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &--map {
+    display: block;
+    float: left;
+    clear: both;
+
+
+    border-color: #ddd;
+    border-width: .25em;
+    border-top: groove;
+    border-left: groove;
+    border-right: solid #ccc;
+    border-bottom: solid #ccc;
+
+
+    @include ir(600/450);
+  }
+
+}
