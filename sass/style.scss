@@ -30,15 +30,8 @@ $browser-minimum-versions: (
 
 .listing {
   $alignment: .5em;
-
-  background: #ddd;
-  padding: $alignment;
   font-family: sans-serif;
   @include clearfix;
-
-  &[data-eq-state="large-preview"] {
-    padding: $alignment * 2;
-  }
 
   // Vertical Alignment
   * + * {
@@ -88,7 +81,8 @@ $browser-minimum-versions: (
   }
 
   // View Listing button
-  &--view {
+  &--view,
+  &--go-back {
     background: #333;
     color: white;
     text-decoration: none;
@@ -101,6 +95,17 @@ $browser-minimum-versions: (
       clear: both;
       float: left;
       margin-left: 50%;
+    }
+  }
+
+  &--go-back {
+    position: absolute;
+    bottom: $alignment * 3;
+    right: $alignment * 7;
+    z-index: 100;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
@@ -177,6 +182,51 @@ $browser-minimum-versions: (
 
 
     @include ir(600/450);
+  }
+
+  .csstransforms3d & {
+    perspective: 1000;
+
+    &[data-open] .listing--flip {
+      transform: rotateY(180deg);
+    }
+
+    &--flip {
+      transition: .6s;
+      transform-style: preserve-3d;
+
+      position: relative;
+    }
+
+    @at-root {
+      %listing--panel {
+        backface-visibility: hidden;
+        position: absolute;
+        background: #ddd;
+        padding: $alignment;
+
+        &[data-eq-state="large-preview"] {
+          padding: $alignment * 2;
+        }
+        width: 100%;
+        top: 0;
+        left: 0;
+        margin-top: 0;
+      }
+    }
+
+    &--front {
+      @include clearfix;
+      @extend %listing--panel;
+      z-index: 2;
+      transform: rotateY(0deg);
+
+    }
+
+    &--back {
+      @extend %listing--panel;
+      transform: rotateY(180deg);
+    }
   }
 
 }

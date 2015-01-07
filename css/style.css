@@ -64,17 +64,12 @@ img, video {
 }
 
 .listing {
-  background: #ddd;
-  padding: 0.5em;
   font-family: sans-serif;
 }
 .listing:after {
   content: "";
   display: table;
   clear: both;
-}
-.listing[data-eq-state="large-preview"] {
-  padding: 1em;
 }
 .listing * + * {
   margin-top: 0.5em;
@@ -109,7 +104,7 @@ img, video {
 .listing [itemprop="postalCode"] {
   display: inline-block;
 }
-.listing--view {
+.listing--view, .listing--go-back {
   background: #333;
   color: white;
   text-decoration: none;
@@ -118,10 +113,19 @@ img, video {
   border-radius: .5em;
   margin-top: 1.5em;
 }
-[data-eq-state="three-cols"] .listing--view {
+[data-eq-state="three-cols"] .listing--view, [data-eq-state="three-cols"] .listing--go-back {
   clear: both;
   float: left;
   margin-left: 50%;
+}
+.listing--go-back {
+  position: absolute;
+  bottom: 1.5em;
+  right: 3.5em;
+  z-index: 100;
+}
+.listing--go-back:hover {
+  cursor: pointer;
 }
 [data-eq-state="floated-image"] .listing--information, [data-eq-state="three-cols"] .listing--information, [data-eq-state="large-preview"] .listing--information {
   float: right;
@@ -178,4 +182,40 @@ img, video {
   top: 0;
   margin: 0;
   padding: 0;
+}
+.csstransforms3d .listing {
+  perspective: 1000;
+}
+.csstransforms3d .listing[data-open] .listing--flip {
+  transform: rotateY(180deg);
+}
+.csstransforms3d .listing--flip {
+  transition: .6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.csstransforms3d .listing--front, .csstransforms3d .listing--back {
+  backface-visibility: hidden;
+  position: absolute;
+  background: #ddd;
+  padding: 0.5em;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin-top: 0;
+}
+.csstransforms3d [data-eq-state="large-preview"].listing--front, .csstransforms3d [data-eq-state="large-preview"].listing--back {
+  padding: 1em;
+}
+.csstransforms3d .listing--front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+.csstransforms3d .listing--front:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.csstransforms3d .listing--back {
+  transform: rotateY(180deg);
 }

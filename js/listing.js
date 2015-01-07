@@ -1,9 +1,10 @@
-(function () {
+(function (Modernizr) {
   'use strict';
 
   window.addEventListener('DOMContentLoaded', function () {
     var listings = document.querySelectorAll('.listing'),
         latency = window.performance.timing.responseStart - window.performance.timing.requestStart,
+        back,
         preview,
         img,
         wrapper,
@@ -34,12 +35,20 @@
           preview.appendChild(img);
         }
 
-        // Hide listing view button here as we don't want it to flash on load
-
+        // Map will only load if very fast connection
         if (latency < 100) {
-          listing.querySelector('.listing--view').style.display = 'none';
+          // If 3D Transforms are available, let flipping happen
+          if (Modernizr.csstransforms3d) {
+            listing.querySelector('.listing--view').addEventListener('click', function (e) {
+              e.preventDefault();
+              listing.setAttribute('data-open', true);
+            });
+          }
+          // If not, hide the listing view button
+          else {
+            listing.querySelector('.listing--view').style.display = 'none';
+          }
         }
-
       }
 
       // Load Google Maps link on load
@@ -49,20 +58,32 @@
             listing = listings[i];
             address = encodeURIComponent(listing.querySelector('.listing--address').innerText);
 
+            // <button class="listing--go-back">Details</button>
+
             wrapper = document.createElement('div');
             map = document.createElement('iframe');
+            back = document.createElement('a');
 
             wrapper.setAttribute('class', 'listing--map');
             map.setAttribute('frameborder', 0);
+            back.setAttribute('class', 'listing--go-back');
+            back.innerText = 'Details';
+            back.addEventListener('click', function () {
+              listing.removeAttribute('data-open');
+            });
 
             map.setAttribute('src', 'https://www.google.com/maps/embed/v1/place?q=' + address + '&key=AIzaSyD6ATXLbrPCgBoeLzcWD1AphoYxKxwbNjE');
 
             wrapper.appendChild(map);
 
-            listing.appendChild(wrapper);
+            listing.querySelector('.listing--back').appendChild(wrapper);
+
+            if (Modernizr.csstransforms3d) {
+              listing.querySelector('.listing--back').appendChild(back);
+            }
           }
         }
       });
     }
   });
-}());
+}(window.Modernizr));
