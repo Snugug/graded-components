@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>Graded Components</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="bower_components/eq.js/dist/eq.min.js"></script>
-  <script src="js/listing.js"></script>
 </head>
 <body>
   <div class="listing" data-eq-pts="floated-image: 330, three-cols: 476, large-preview: 656">
@@ -21,7 +19,7 @@
         </ul>
       </div>
 
-      <div class="listing--address" itemscope itemtype="http://schema.org/PostalAddress" data-address="1600%20Pennsylvania%20Avenue%20Northwest%2C%20Washington%2C%20DC%2C%20United%20States">
+      <div class="listing--address" itemscope itemtype="http://schema.org/PostalAddress">
         <span itemprop="name">The White House</span>
         <span itemprop="streetAddress">1600 Pennsylvania Ave</span>
         <span itemprop="addressLocality">Washington</span>,
@@ -32,8 +30,7 @@
       <a class="listing--view" href="https://www.google.com/maps/place/1600+Pennsylvania+Ave+NW,+Washington,+DC+20500/@38.8977332,-77.0365305,17z/data=!3m1!4b1!4m2!3m1!1s0x89b7b7bcdec17ee3:0xf920b148b3d45e45">View Map</a>
     </div>
 
-    <div class="listing--preview">
-      <img src="images/house.jpg" alt="White House, from Wikipedia" class="listing--image">
+    <div class="listing--preview" data-src="images/house.jpg", data-alt="White House, from Wikipedia">
     </div>
 
 <!--     <div class="listing--map">
@@ -44,5 +41,7 @@ src="https://www.google.com/maps/embed/v1/place?q=&key=AIzaSyD6ATXLbrPCgBoeLzcWD
 
 
   </div>
+  <script src="bower_components/eq.js/dist/eq.min.js"></script>
+  <script src="js/listing.js"></script>
 </body>
 </html>
