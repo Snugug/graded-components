@@ -180,8 +180,20 @@ $browser-minimum-versions: (
     border-right: solid #ccc;
     border-bottom: solid #ccc;
 
-
     @include ir(600/450);
+
+    .csstransforms3d & {
+      @include ir-ratio(472/222);
+    }
+
+    .csstransforms3d [data-eq-state="three-cols"] & {
+      @include ir-ratio(621/136);
+    }
+
+    .csstransforms3d [data-eq-state="large-preview"] & {
+      @include ir-ratio(657/255);
+    }
+
   }
 
   .csstransforms3d & {

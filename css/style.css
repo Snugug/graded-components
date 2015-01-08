@@ -183,6 +183,18 @@ img, video {
   margin: 0;
   padding: 0;
 }
+.csstransforms3d .listing--map {
+  padding-top: 47.0339%;
+  width: 100%;
+}
+.csstransforms3d [data-eq-state="three-cols"] .listing--map {
+  padding-top: 21.90016%;
+  width: 100%;
+}
+.csstransforms3d [data-eq-state="large-preview"] .listing--map {
+  padding-top: 38.81279%;
+  width: 100%;
+}
 .csstransforms3d .listing {
   perspective: 1000;
 }
