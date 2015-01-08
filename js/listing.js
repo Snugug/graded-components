@@ -1,6 +1,65 @@
 (function (Modernizr) {
   'use strict';
 
+  /**
+   * Get closest DOM element up the tree that contains a class, ID, or data attribute
+   * @param  {Node} elem The base element
+   * @param  {String} selector The class, id, data attribute, or tag to look for
+   * @return {Node} Null if no match
+   *
+   * http://gomakethings.com/climbing-up-and-down-the-dom-tree-with-vanilla-javascript/
+   */
+  var getClosest = function (elem, selector) {
+
+      var firstChar = selector.charAt(0);
+
+      // Get closest match
+      for ( ; elem && elem !== document; elem = elem.parentNode ) {
+
+          // If selector is a class
+          if ( firstChar === '.' ) {
+              if ( elem.classList.contains( selector.substr(1) ) ) {
+                  return elem;
+              }
+          }
+
+          // If selector is an ID
+          if ( firstChar === '#' ) {
+              if ( elem.id === selector.substr(1) ) {
+                  return elem;
+              }
+          }
+
+          // If selector is a data attribute
+          if ( firstChar === '[' ) {
+              if ( elem.hasAttribute( selector.substr(1, selector.length - 2) ) ) {
+                  return elem;
+              }
+          }
+
+          // If selector is a tag
+          if ( elem.tagName.toLowerCase() === selector ) {
+              return elem;
+          }
+
+      }
+
+      return false;
+
+  };
+
+  var closest = function (e) {
+    var parent = getClosest(e.target, '.listing');
+    e.preventDefault();
+
+    if (parent.hasAttribute('data-open')) {
+      parent.removeAttribute('data-open');
+    }
+    else {
+      parent.setAttribute('data-open', true);
+    }
+  };
+
   window.addEventListener('DOMContentLoaded', function () {
     var listings = document.querySelectorAll('.listing'),
         latency = window.performance.timing.responseStart - window.performance.timing.requestStart,
@@ -12,8 +71,6 @@
         listing,
         address,
         i;
-
-    console.log(latency);
 
     //////////////////////////////
     // Only enhance if on a low latency connection
@@ -39,10 +96,7 @@
         if (latency < 100) {
           // If 3D Transforms are available, let flipping happen
           if (Modernizr.csstransforms3d) {
-            listing.querySelector('.listing--view').addEventListener('click', function (e) {
-              e.preventDefault();
-              listing.setAttribute('data-open', true);
-            });
+            listing.querySelector('.listing--view').addEventListener('click', closest);
           }
           // If not, hide the listing view button
           else {
@@ -68,9 +122,7 @@
             map.setAttribute('frameborder', 0);
             back.setAttribute('class', 'listing--go-back');
             back.innerText = 'Details';
-            back.addEventListener('click', function () {
-              listing.removeAttribute('data-open');
-            });
+            back.addEventListener('click', closest);
 
             map.setAttribute('src', 'https://www.google.com/maps/embed/v1/place?q=' + address + '&key=AIzaSyD6ATXLbrPCgBoeLzcWD1AphoYxKxwbNjE');
 
