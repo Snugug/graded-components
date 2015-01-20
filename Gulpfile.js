@@ -74,3 +74,9 @@ gulp.task('serve', ['server']);
 // Default Task
 //////////////////////////////
 gulp.task('default', ['server']);
+
+
+//////////////////////////////
+// Swig Tasks
+//////////////////////////////
+require('./tasks/swig')(gulp);
