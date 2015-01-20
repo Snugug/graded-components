@@ -6,8 +6,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="listing" data-eq-pts="floated-image: 330, three-cols: 476, large-preview: 656">
 
+  <div class="left">
+    <div class="listing" data-eq-pts="floated-image: 330, three-cols: 476, large-preview: 656">
   <div class="listing--flip">
     <div class="listing--front">
       <div class="listing--information">
@@ -39,11 +40,47 @@
     <div class="listing--back">
     </div>
   </div>
-
-
-
+</div>
 
   </div>
+
+  <div class="right">
+    <div class="listing" data-eq-pts="floated-image: 330, three-cols: 476, large-preview: 656">
+  <div class="listing--flip">
+    <div class="listing--front">
+      <div class="listing--information">
+        <div class="listing--details">
+          <h2 class="listing--primary-header">
+            Property Details
+          </h2>
+          <ul class="listing--amenities">
+            <li class="listing--amenity">4 bedroom / 3 bath</li>
+            <li class="listing--amenity">2-car garage</li>
+          </ul>
+        </div>
+
+        <div class="listing--address" itemscope itemtype="http://schema.org/PostalAddress">
+          <span itemprop="name">The White House</span>
+          <span itemprop="streetAddress">1600 Pennsylvania Ave</span>
+          <span itemprop="addressLocality">Washington</span>,
+          <span itemprop="addressRegion">DC</span>
+          <span itemprop="postalCode">20500</span>
+        </div>
+
+        <a class="listing--view" href="https://www.google.com/maps/place/1600+Pennsylvania+Ave+NW,+Washington,+DC+20500/@38.8977332,-77.0365305,17z/data=!3m1!4b1!4m2!3m1!1s0x89b7b7bcdec17ee3:0xf920b148b3d45e45">View Map</a>
+      </div>
+
+      <div class="listing--preview" data-src="images/house.jpg", data-alt="White House, from Wikipedia">
+      </div>
+    </div>
+
+    <div class="listing--back">
+    </div>
+  </div>
+</div>
+
+  </div>
+
   <script src="bower_components/modernizr/modernizr.js"></script>
   <script src="bower_components/eq.js/dist/eq.min.js"></script>
   <script src="js/listing.js"></script>
