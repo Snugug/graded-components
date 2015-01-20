@@ -209,7 +209,7 @@ img, video {
 .csstransforms3d .listing--front, .csstransforms3d .listing--back {
   backface-visibility: hidden;
   position: absolute;
-  background: #ddd;
+  background: rgba(128, 128, 128, 0.5);
   padding: 0.5em;
   width: 100%;
   top: 0;
@@ -230,4 +230,18 @@ img, video {
 }
 .csstransforms3d .listing--back {
   transform: rotateY(180deg);
+}
+
+.left {
+  width: 80%;
+  float: left;
+  background: rgba(210, 105, 30, 0.45);
+  height: 100vh;
+}
+
+.right {
+  width: 20%;
+  float: right;
+  background: rgba(210, 105, 30, 0.35);
+  height: 100vh;
 }
