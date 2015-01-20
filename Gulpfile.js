@@ -66,7 +66,7 @@ gulp.task('browserSync', function () {
 //////////////////////////////
 // Server Tasks
 //////////////////////////////
-gulp.task('server', ['watch', 'compass', 'browserSync']);
+gulp.task('server', ['watch', 'compass', 'swig:watch', 'browserSync']);
 gulp.task('serve', ['server']);
 
 
