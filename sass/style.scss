@@ -244,18 +244,40 @@ $browser-minimum-versions: (
 }
 
 
-$sidebar: 20%;
+$sidebar0: 40%;
+$sidebar1: 30%;
+$sidebar2: 20%;
 
 .left {
-  width: 100% - $sidebar;
+  width: 100%;
   float: left;
-  background: rgba(chocolate, .45);
   height: 100vh;
+  @include mq(454px) {
+    width: 100% - $sidebar0;
+  }
+  @include mq(608px) {
+    width: 100% - $sidebar1;
+  }
+  @include mq(938px) {
+    width: 100% - $sidebar2;
+  }
+
+  background: rgba(chocolate, .45);
 }
 
 .right {
-  width: $sidebar;
+  width: 100%;
   float: right;
-  background: rgba(chocolate, .35);
   height: 100vh;
+  @include mq(454px) {
+    width: $sidebar0;
+  }
+  @include mq(608px) {
+    width: $sidebar1;
+  }
+  @include mq(938px) {
+    width: $sidebar2;
+  }
+
+  background: rgba(chocolate, .35);
 }
